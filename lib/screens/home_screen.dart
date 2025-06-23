@@ -1,7 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../services/firebase_service.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseService _firebaseService = FirebaseService();
+  User? _currentUser;
+  Map<String, dynamic>? _userData;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  void _loadUserData() {
+    _currentUser = _firebaseService.currentUser;
+    if (_currentUser != null) {
+      _firebaseService
+          .getUserData(_currentUser!.uid)
+          .then((data) {
+            if (mounted) {
+              setState(() {
+                _userData = data;
+              });
+            }
+          })
+          .catchError((error) {
+            print('Error loading user data: $error');
+          });
+    }
+  }
+
+  void _handleLogout() async {
+    try {
+      await _firebaseService.signOut();
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, '/login');
+      }
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error signing out: $error'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +68,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout, color: Colors.white),
-            onPressed: () {
-              // Here would go the logout logic
-              Navigator.pop(context);
-            },
+            onPressed: _handleLogout,
           ),
         ],
       ),
@@ -35,9 +85,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Welcome!',
-                style: TextStyle(
+              Text(
+                'Welcome${_userData != null ? ', ${_userData!['fullName']}' : ''}!',
+                style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2E7D32),
