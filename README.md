@@ -1,71 +1,71 @@
-# GreenApp - Tu Guía de Alimentación Saludable
+# GreenApp - Your Healthy Eating Guide
 
-Una aplicación Flutter moderna y elegante diseñada para ayudarte a mantener una alimentación saludable y equilibrada.
+A modern and elegant Flutter application designed to help you maintain a healthy and balanced diet.
 
-## Características
+## Features
 
-- **Login Seguro**: Interfaz de inicio de sesión con validación de formularios
-- **Diseño Moderno**: UI/UX atractiva con gradientes y animaciones suaves
-- **Tema Verde**: Paleta de colores inspirada en la naturaleza y la salud
-- **Responsive**: Diseño adaptable a diferentes tamaños de pantalla
+- **Secure Login**: Login interface with form validation
+- **Modern Design**: Attractive UI/UX with gradients and smooth animations
+- **Green Theme**: Color palette inspired by nature and health
+- **Responsive**: Design adaptable to different screen sizes
 
-## Funcionalidades Implementadas
+## Implemented Features
 
-### Pantalla de Login
-- Validación de correo electrónico
-- Validación de contraseña (mínimo 6 caracteres)
-- Mostrar/ocultar contraseña
-- Indicador de carga durante el proceso de login
-- Enlaces para registro y recuperación de contraseña
+### Login Screen
+- Email validation
+- Password validation (minimum 6 characters)
+- Show/hide password
+- Loading indicator during login process
+- Links for registration and password recovery
 
-### Pantalla Principal
-- Dashboard con tarjetas de funcionalidades
-- Navegación intuitiva
-- Botón de logout
-- Diseño de cuadrícula responsive
+### Main Screen
+- Dashboard with feature cards
+- Intuitive navigation
+- Logout button
+- Responsive grid design
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 lib/
-├── main.dart                 # Punto de entrada de la aplicación
+├── main.dart                 # Application entry point
 ├── constants/
-│   └── app_colors.dart      # Constantes de colores
+│   └── app_colors.dart      # Color constants
 ├── screens/
-│   ├── login_screen.dart    # Pantalla de login
-│   └── home_screen.dart     # Pantalla principal
-├── widgets/                 # Widgets reutilizables (futuro)
-├── models/                  # Modelos de datos (futuro)
-└── services/               # Servicios y APIs (futuro)
+│   ├── login_screen.dart    # Login screen
+│   └── home_screen.dart     # Main screen
+├── widgets/                 # Reusable widgets (future)
+├── models/                  # Data models (future)
+└── services/               # Services and APIs (future)
 ```
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-- **Flutter**: Framework de desarrollo multiplataforma
-- **Dart**: Lenguaje de programación
-- **Material Design**: Sistema de diseño de Google
+- **Flutter**: Cross-platform development framework
+- **Dart**: Programming language
+- **Material Design**: Google's design system
 
-## Instalación y Ejecución
+## Installation and Execution
 
-1. Asegúrate de tener Flutter instalado en tu sistema
-2. Clona este repositorio
-3. Ejecuta `flutter pub get` para instalar las dependencias
-4. Ejecuta `flutter run` para iniciar la aplicación
+1. Make sure you have Flutter installed on your system
+2. Clone this repository
+3. Run `flutter pub get` to install dependencies
+4. Run `flutter run` to start the application
 
-## Próximas Funcionalidades
+## Upcoming Features
 
-- [ ] Sistema de registro de usuarios
-- [ ] Base de datos de recetas saludables
-- [ ] Calculadora de calorías
-- [ ] Seguimiento de progreso nutricional
-- [ ] Lista de compras inteligente
-- [ ] Notificaciones de recordatorio
-- [ ] Integración con APIs de nutrición
+- [ ] User registration system
+- [ ] Healthy recipes database
+- [ ] Calorie calculator
+- [ ] Nutritional progress tracking
+- [ ] Smart shopping list
+- [ ] Reminder notifications
+- [ ] Nutrition APIs integration
 
-## Contribución
+## Contributing
 
-¡Las contribuciones son bienvenidas! Por favor, abre un issue o un pull request para sugerir mejoras o reportar bugs.
+Contributions are welcome! Please open an issue or pull request to suggest improvements or report bugs.
 
-## Licencia
+## License
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+This project is under the MIT License. See the `LICENSE` file for more details.
