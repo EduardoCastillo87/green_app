@@ -77,7 +77,7 @@ dart pub global activate flutterfire_cli
 2. Run the following command:
 
 ```bash
-flutterfire configure --project=your-firebase-project-id
+flutterfire configure --project=green-app-9a185
 ```
 
 This will:

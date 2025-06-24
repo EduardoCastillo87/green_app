@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseService {
   FirebaseAuth? _auth;
@@ -188,6 +189,52 @@ class FirebaseService {
       return data?['preferences'] as Map<String, dynamic>?;
     } catch (e) {
       throw 'An error occurred while fetching preferences: $e';
+    }
+  }
+
+  // Google Sign-In
+  Future<UserCredential?> signInWithGoogle() async {
+    if (!isAvailable) {
+      throw 'Firebase is not configured. Please follow the setup guide in FIREBASE_SETUP.md';
+    }
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        // User canceled the sign-in
+        return null;
+      }
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final userCredential = await _auth!.signInWithCredential(credential);
+      // If new user, create Firestore profile
+      final userDoc = await _firestore!
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
+      if (!userDoc.exists) {
+        await _firestore!
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .set({
+              'fullName': userCredential.user!.displayName ?? '',
+              'email': userCredential.user!.email ?? '',
+              'createdAt': FieldValue.serverTimestamp(),
+              'lastLogin': FieldValue.serverTimestamp(),
+              'provider': 'google',
+            });
+      } else {
+        await _firestore!
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .update({'lastLogin': FieldValue.serverTimestamp()});
+      }
+      return userCredential;
+    } catch (e) {
+      throw 'Google sign-in failed: $e';
     }
   }
 

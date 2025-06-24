@@ -41,47 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'your-web-api-key',
-    appId: 'your-web-app-id',
-    messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    authDomain: 'your-project-id.firebaseapp.com',
-    storageBucket: 'your-project-id.appspot.com',
+    apiKey: 'AIzaSyAMFpYcnj7GeJE9vZZri83kdmzgXN0wCZ4',
+    appId: '1:133666874734:web:1520babde988265d958d7f',
+    messagingSenderId: '133666874734',
+    projectId: 'green-app-9a185',
+    authDomain: 'green-app-9a185.firebaseapp.com',
+    storageBucket: 'green-app-9a185.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'your-android-api-key',
-    appId: 'your-android-app-id',
-    messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    storageBucket: 'your-project-id.appspot.com',
+    apiKey: 'AIzaSyBkB-sEOGaNAsWD4QfOczw_5ik94137cXg',
+    appId: '1:133666874734:android:74eae3246443db75958d7f',
+    messagingSenderId: '133666874734',
+    projectId: 'green-app-9a185',
+    storageBucket: 'green-app-9a185.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'your-ios-api-key',
-    appId: 'your-ios-app-id',
-    messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    storageBucket: 'your-project-id.appspot.com',
-    iosClientId: 'your-ios-client-id',
+    apiKey: 'AIzaSyC3yIrBnlpl1G8pEuAoMAq1KECORber6Z0',
+    appId: '1:133666874734:ios:5b425608bf4227fc958d7f',
+    messagingSenderId: '133666874734',
+    projectId: 'green-app-9a185',
+    storageBucket: 'green-app-9a185.firebasestorage.app',
     iosBundleId: 'com.example.greenapp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'your-macos-api-key',
-    appId: 'your-macos-app-id',
-    messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    storageBucket: 'your-project-id.appspot.com',
-    iosClientId: 'your-macos-client-id',
+    apiKey: 'AIzaSyC3yIrBnlpl1G8pEuAoMAq1KECORber6Z0',
+    appId: '1:133666874734:ios:5b425608bf4227fc958d7f',
+    messagingSenderId: '133666874734',
+    projectId: 'green-app-9a185',
+    storageBucket: 'green-app-9a185.firebasestorage.app',
     iosBundleId: 'com.example.greenapp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'your-windows-api-key',
-    appId: 'your-windows-app-id',
-    messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    storageBucket: 'your-project-id.appspot.com',
+    apiKey: 'AIzaSyAMFpYcnj7GeJE9vZZri83kdmzgXN0wCZ4',
+    appId: '1:133666874734:web:1ab81a97590089ae958d7f',
+    messagingSenderId: '133666874734',
+    projectId: 'green-app-9a185',
+    authDomain: 'green-app-9a185.firebaseapp.com',
+    storageBucket: 'green-app-9a185.firebasestorage.app',
   );
 }
