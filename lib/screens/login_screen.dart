@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../services/firebase_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,7 +11,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _firebaseService = FirebaseService();
   bool _isPasswordVisible = false;
   bool _isLoading = false;
 
@@ -30,11 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
 
       try {
-        await _firebaseService.signIn(
-          email: _emailController.text.trim(),
-          password: _passwordController.text,
-        );
-
+        // Placeholder for login logic
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -76,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     try {
-      await _firebaseService.resetPassword(_emailController.text.trim());
+      // Placeholder for forgot password logic
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -93,39 +87,6 @@ class _LoginScreenState extends State<LoginScreen> {
             backgroundColor: Colors.red,
           ),
         );
-      }
-    }
-  }
-
-  void _handleGoogleSignIn() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final userCredential = await _firebaseService.signInWithGoogle();
-      if (userCredential != null && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Welcome to your healthy eating app!'),
-            backgroundColor: Colors.green,
-          ),
-        );
-        Navigator.pushReplacementNamed(context, '/home');
-      }
-    } catch (error) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(error.toString()),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
       }
     }
   }
@@ -332,30 +293,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           const SizedBox(height: 24),
-
-                          // Google Sign-In button
-                          ElevatedButton.icon(
-                            icon: Image.asset(
-                              'assets/google_logo.png',
-                              height: 24,
-                              width: 24,
-                            ),
-                            label: const Text(
-                              'Sign in with Google',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black87,
-                              side: const BorderSide(color: Color(0xFF4CAF50)),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              elevation: 2,
-                            ),
-                            onPressed: _isLoading ? null : _handleGoogleSignIn,
-                          ),
                         ],
                       ),
                     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../services/firebase_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -14,7 +13,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _firebaseService = FirebaseService();
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
   bool _isLoading = false;
@@ -35,12 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       });
 
       try {
-        await _firebaseService.signUp(
-          email: _emailController.text.trim(),
-          password: _passwordController.text,
-          fullName: _nameController.text.trim(),
-        );
-
+        // Placeholder for actual registration logic
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

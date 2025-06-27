@@ -24,25 +24,6 @@ fi
 
 echo "✅ Dependencies are installed"
 
-# Check if Firebase dependencies are in pubspec.lock
-if grep -q "firebase_core" pubspec.lock; then
-    echo "✅ Firebase Core is installed"
-else
-    echo "❌ Firebase Core is missing"
-fi
-
-if grep -q "firebase_auth" pubspec.lock; then
-    echo "✅ Firebase Auth is installed"
-else
-    echo "❌ Firebase Auth is missing"
-fi
-
-if grep -q "cloud_firestore" pubspec.lock; then
-    echo "✅ Cloud Firestore is installed"
-else
-    echo "❌ Cloud Firestore is missing"
-fi
-
 # Check iOS deployment target
 ios_target=$(grep "IPHONEOS_DEPLOYMENT_TARGET" ios/Runner.xcodeproj/project.pbxproj | head -n 1)
 if [[ $ios_target == *"13.0"* ]]; then

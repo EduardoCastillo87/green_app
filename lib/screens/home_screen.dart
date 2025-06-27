@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import '../services/firebase_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,40 +8,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final FirebaseService _firebaseService = FirebaseService();
-  User? _currentUser;
-  Map<String, dynamic>? _userData;
-
   @override
   void initState() {
     super.initState();
-    _loadUserData();
-  }
-
-  void _loadUserData() {
-    _currentUser = _firebaseService.currentUser;
-    if (_currentUser != null) {
-      _firebaseService
-          .getUserData(_currentUser!.uid)
-          .then((data) {
-            if (mounted) {
-              setState(() {
-                _userData = data;
-              });
-            }
-          })
-          .catchError((error) {
-            print('Error loading user data: $error');
-          });
-    }
   }
 
   void _handleLogout() async {
     try {
-      await _firebaseService.signOut();
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, '/login');
-      }
+      // Placeholder for logout logic
     } catch (error) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -86,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Welcome${_userData != null ? ', ${_userData!['fullName']}' : ''}!',
+                'Welcome!',
                 style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
